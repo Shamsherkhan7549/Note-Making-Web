@@ -6,8 +6,7 @@ const {main} = require('./configue/configue')
 const dotenv = require('dotenv')
 dotenv.config()
 const app = express();
-
-
+const port = process.env.PORT || 3000
 
 app.use(cors({
     origin: process.env.VITE_FRONTEND_URL,
@@ -25,6 +24,6 @@ app.get('/', (req, res) => {
     res.send("Hello World")
 })
 
-app.listen(3000, () => {
+app.listen(port, () => {
     console.log("Server running on port 3000")
 })
