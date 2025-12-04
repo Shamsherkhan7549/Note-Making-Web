@@ -3,10 +3,17 @@ const mongoose = require('mongoose')
 const cors = require('cors')
 const router = require('./route/router')
 const {main} = require('./configue/configue')
-const app = express()
+const dotenv = require('dotenv')
+dotenv.config()
+const app = express();
 
 
-app.use(cors())
+
+app.use(cors({
+    origin: process.env.VITE_FRONTEND_URL,
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true,
+}))
 app.use(express.json())
 
 // Connect to MongoDB
